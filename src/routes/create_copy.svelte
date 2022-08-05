@@ -1,8 +1,9 @@
 
 <script>
     import ProgressBar from "../components/ProgressBar.svelte";
+    import Form from '../components/Form.svelte';
 
-    let steps = ['test', 'test', 'test', 'test', 'test', 'test', 'test'], currentActive = 1, progressBar;
+    let steps = ['Info', 'Address', 'Payment', 'Confirmation'], currentActive = 1, progressBar;
 
     const handleProgress = (stepIncrement) => {
         progressBar.handleProgress(stepIncrement)
@@ -16,10 +17,19 @@
             <p class="font-mono font-bold text-orange-600 text-2xl w-max">Select the genre that you want to make a playlist of</p>
         </div>
     </div>
+
     <ProgressBar {steps} bind:currentActive bind:this={progressBar}/>
-    <div class="font-mono">
-        <button class="p-3 transition-all duration-300 ease-in-out font-mono border-black border-solid border-2 rounded-none  hover:shadow-[-6px_6px_#000] block md:inline-block my-4 hover:text-orange-600 hover:text-bold w-full sm:w-40 text-center" on:click={() => handleProgress(-1)} disabled={currentActive == 1}>Prev</button>
-        <button class="p-3 transition-all duration-300 ease-in-out font-mono border-black border-solid border-2 rounded-none  hover:shadow-[-6px_6px_#000] block md:inline-block my-4 hover:text-orange-600 hover:text-bold w-full sm:w-40 text-center" on:click={() => handleProgress(+1)} disabled={currentActive == steps.length}>Next</button>
+
+    <div class="flex flex-row items-center justify-center gap-12 w-[800px]">
+        <button class="block md:inline-block" on:click={() => handleProgress(-1)} disabled={currentActive == 1}>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
+        </button>
+
+        <Form active_step={steps[currentActive-1]}/>
+        
+        <button class="block md:inline-block" on:click={() => handleProgress(+1)} disabled={currentActive == steps.length}>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+        </button>
     </div>
     
 </div>
