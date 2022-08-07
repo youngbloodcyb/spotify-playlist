@@ -11,24 +11,26 @@
 </script>
 
 <div class="w-full h-screen flex flex-col items-center">
+    <div class="w-[800px]">
     <div class="my-16 w-max">
         <h1 class="text-6xl font-playfair">let's make a playlist</h1>
         <div class="typewriter my-6">
-            <p class="font-mono font-bold text-orange-600 text-2xl w-max">Select the genre that you want to make a playlist of</p>
+            <p class="font-mono font-bold text-orange-600 text-2xl w-max">Change each attribute to get a cool playlist...</p>
         </div>
+    </div>
     </div>
 
     <ProgressBar {steps} bind:currentActive bind:this={progressBar}/>
 
     <div class="flex flex-row items-center justify-center gap-12 w-[800px]">
         <button class="block md:inline-block" on:click={() => handleProgress(-1)} disabled={currentActive == 1}>
-            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"/></svg>
         </button>
 
         <Form active_step={steps[currentActive-1]}/>
         
         <button class="block md:inline-block" on:click={() => handleProgress(+1)} disabled={currentActive == steps.length}>
-            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/></svg>
         </button>
     </div>
     
